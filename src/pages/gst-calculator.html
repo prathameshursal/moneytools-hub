@@ -1,0 +1,77 @@
+---
+slug: gst-calculator
+title: GST Calculator - Add or Remove GST
+description: Add GST to a base price or extract GST from a gross amount at 5, 12, 18, or 28 percent. Shows CGST and SGST split. Free online tool.
+script: /assets/gst.js
+crumbs: Tools::/tools/|GST Calculator::
+---
+
+<h1>GST Calculator</h1>
+<p class="lead">Add GST to a base price, or remove GST from a tax-included price. Choose any rate and see the CGST and SGST split instantly.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="gst-type">Calculation type</label>
+    <select id="gst-type">
+      <option value="add">Add GST to base amount</option>
+      <option value="remove">Remove GST from total (tax-included price)</option>
+    </select>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="gst-amount">Amount (₹)</label>
+      <input type="number" id="gst-amount" min="0" step="0.01" placeholder="e.g. 10000" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="gst-rate">GST rate (%)</label>
+      <select id="gst-rate">
+        <option value="0.25">0.25%</option>
+        <option value="3">3%</option>
+        <option value="5">5%</option>
+        <option value="12">12%</option>
+        <option value="18" selected>18%</option>
+        <option value="28">28%</option>
+      </select>
+    </div>
+  </div>
+  <button class="btn" id="gst-btn" type="button">Calculate GST</button>
+</div>
+
+<div class="result" id="gst-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Base amount</div><div class="v" id="gst-base">-</div></div>
+    <div class="cell"><div class="k">Total GST</div><div class="v" id="gst-gst">-</div></div>
+    <div class="cell"><div class="k">Final amount</div><div class="v" id="gst-total">-</div></div>
+  </div>
+  <div class="result-grid" style="margin-top:12px">
+    <div class="cell"><div class="k">CGST (half)</div><div class="v" id="gst-cgst">-</div></div>
+    <div class="cell"><div class="k">SGST (half)</div><div class="v" id="gst-sgst">-</div></div>
+  </div>
+</div>
+
+<h2>How GST math works</h2>
+<p><strong>Adding GST:</strong> multiply the base amount by the rate. A service billed at ₹10,000 with 18% GST carries ₹1,800 GST, so the invoice total is ₹11,800.</p>
+<p><strong>Removing GST:</strong> when a price already includes GST, divide by (1 + rate). The GST inside an ₹11,800 bill at 18% is 11,800 × 18/118 = ₹1,800, and the base is ₹10,000. Dividing the tax-inclusive price by 1.18 directly is the common mistake: it understates the base.</p>
+<p><strong>CGST and SGST:</strong> for sales within a state, GST splits equally between the Centre and the state. So 18% becomes 9% CGST plus 9% SGST. For interstate sales the same 18% is charged as one IGST line instead. The totals are identical, only the split differs.</p>
+
+<h2>Current GST slabs at a glance</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Slab</th><th>Typical items</th></tr></thead>
+  <tbody>
+    <tr><td>0% (exempt)</td><td>Fresh produce, milk, unbranded staples, education services</td></tr>
+    <tr><td>0.25% / 3%</td><td>Rough diamonds; gold, silver, jewellery</td></tr>
+    <tr><td>5%</td><td>Packaged foods, transport, economy airfare, restaurantalin dine-in without input credit</td></tr>
+    <tr><td>12%</td><td>Processed foods, mobile phones, most medicines</td></tr>
+    <tr><td>18%</td><td>Most services, electronics, capital goods - the standard slab</td></tr>
+    <tr><td>28%</td><td>Luxury goods, cars, tobacco, aerated drinks</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="note">Slab assignments change with GST Council decisions. Always confirm the rate for a specific product on the official <a href="https://cbic-gst.gov.in/" rel="noopener" target="_blank">CBIC portal</a> before invoicing.</div>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Is GST calculated on the discounted price?</summary><p>Yes. GST applies to the net price after discounts, not the list price.</p></details>
+<details><summary>What is the difference between CGST, SGST, and IGST?</summary><p>CGST goes to the central government, SGST to the state where the sale happens, and IGST (equal to CGST + SGST combined) applies on interstate sales and imports.</p></details>
+<details><summary>Do I need a GST number to charge GST?</summary><p>Businesses above the turnover threshold (₹40 lakh for goods, ₹20 lakh for services, higher in special states) must register. Below the threshold, registration is optional.</p></details>
+<details><summary>Is this calculator free?</summary><p>Yes, completely. It also runs entirely in your browser, so no amounts are uploaded anywhere.</p></details>

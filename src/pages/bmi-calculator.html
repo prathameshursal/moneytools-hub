@@ -1,0 +1,81 @@
+---
+slug: bmi-calculator
+title: BMI Calculator - Metric and Imperial
+description: Calculate your Body Mass Index (BMI) in kg/cm or lbs/feet, see your WHO category, and get your healthy weight range. Free, private, instant.
+script: /assets/bmi.js
+crumbs: Tools::/tools/|BMI Calculator::
+---
+
+<h1>BMI Calculator</h1>
+<p class="lead">Body Mass Index compares your weight to your height to flag whether you are likely underweight, normal, overweight, or obese. Choose metric or imperial below.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="bmi-unit">Units</label>
+    <select id="bmi-unit">
+      <option value="metric" selected>Metric (kg, cm)</option>
+      <option value="imperial">Imperial (lb, ft/in)</option>
+    </select>
+  </div>
+  <div id="bmi-metric">
+    <div class="field-row">
+      <div class="field">
+        <label for="bmi-height-cm">Height (cm)</label>
+        <input type="number" id="bmi-height-cm" min="50" max="250" step="0.5" placeholder="e.g. 170" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="bmi-weight-kg">Weight (kg)</label>
+        <input type="number" id="bmi-weight-kg" min="10" max="300" step="0.1" placeholder="e.g. 65" inputmode="decimal">
+      </div>
+    </div>
+  </div>
+  <div id="bmi-imperial" style="display:none">
+    <div class="field-row">
+      <div class="field">
+        <label for="bmi-height-ft">Height (feet)</label>
+        <input type="number" id="bmi-height-ft" min="1" max="8" step="1" placeholder="e.g. 5" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="bmi-height-in">Plus inches</label>
+        <input type="number" id="bmi-height-in" min="0" max="11" step="0.5" placeholder="e.g. 7" inputmode="decimal">
+      </div>
+    </div>
+    <div class="field">
+      <label for="bmi-weight-lb">Weight (lb)</label>
+      <input type="number" id="bmi-weight-lb" min="20" max="700" step="0.5" placeholder="e.g. 145" inputmode="decimal">
+    </div>
+  </div>
+  <button class="btn" id="bmi-btn" type="button">Calculate BMI</button>
+</div>
+
+<div class="result" id="bmi-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Your BMI</div><div class="v" id="bmi-value">-</div></div>
+    <div class="cell"><div class="k">Category</div><div class="v" id="bmi-cat">-</div></div>
+    <div class="cell"><div class="k">Healthy weight range for your height</div><div class="v" id="bmi-range">-</div></div>
+  </div>
+</div>
+
+<h2>BMI categories (WHO)</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>BMI range</th><th>Category</th></tr></thead>
+  <tbody>
+    <tr><td>Below 18.5</td><td>Underweight</td></tr>
+    <tr><td>18.5 - 24.9</td><td>Normal weight</td></tr>
+    <tr><td>25.0 - 29.9</td><td>Overweight</td></tr>
+    <tr><td>30.0 and above</td><td>Obese</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>How BMI is calculated</h2>
+<div class="card"><strong>BMI = weight (kg) / height (m)²</strong><br>In imperial units: 703 × weight (lb) / height (in)². The formula dates from the 1830s and remains the standard population screening tool.</div>
+
+<div class="note"><strong>BMI is a screening tool, not a diagnosis.</strong> It does not distinguish muscle from fat, so athletes often read "overweight" despite low body fat. It also shifts with age, and some health bodies suggest lower cut-offs for South Asian populations (overweight near 23, obese near 27.5) because cardiometabolic risk appears at lower BMIs. Use it as a starting point and consult a doctor for a real assessment.</p></div>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Is BMI accurate for children?</summary><p>No. Children and teens are assessed with age-and-sex percentile charts instead of the adult table above.</p></details>
+<details><summary>What BMI is healthy for Indians?</summary><p>Research suggests Indian adults face metabolic risk at lower BMIs, so many clinicians target 18.5-23 rather than 18.5-25.</p></details>
+<details><summary>Can BMI be high and still be healthy?</summary><p>Yes. Muscular people often have high BMI with low body fat. Waist circumference and body composition give a fuller picture.</p></details>
+<details><summary>Is my height or weight stored anywhere?</summary><p>No. The calculation happens in your browser and never leaves your device.</p></details>

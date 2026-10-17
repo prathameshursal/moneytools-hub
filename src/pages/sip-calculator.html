@@ -1,0 +1,72 @@
+---
+slug: sip-calculator
+title: SIP Calculator - Mutual Fund Returns
+description: Calculate the future value of your monthly SIP investment. See invested amount, estimated gains, and wealth gained via compounding. Free tool.
+script: /assets/sip.js
+crumbs: Tools::/tools/|SIP Calculator::
+---
+
+<h1>SIP Calculator</h1>
+<p class="lead">A Systematic Investment Plan invests a fixed amount every month. Enter your monthly amount, expected annual return, and years to see the possible corpus.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="sip-monthly">Monthly investment (₹)</label>
+    <input type="number" id="sip-monthly" min="100" step="100" placeholder="e.g. 5000" inputmode="numeric">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="sip-rate">Expected return (% per year)</label>
+      <input type="number" id="sip-rate" min="0" max="30" step="0.5" placeholder="e.g. 12" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="sip-years">Investment period (years)</label>
+      <input type="number" id="sip-years" min="1" max="50" step="1" placeholder="e.g. 15" inputmode="numeric">
+    </div>
+  </div>
+  <button class="btn" id="sip-btn" type="button">Calculate</button>
+</div>
+
+<div class="result" id="sip-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Estimated corpus</div><div class="v" id="sip-future">-</div></div>
+    <div class="cell"><div class="k">Amount invested</div><div class="v" id="sip-invested">-</div></div>
+    <div class="cell"><div class="k">Estimated gains</div><div class="v" id="sip-gain">-</div></div>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar">
+      <div class="seg-principal" id="sip-bar-invested" style="width:0%"></div>
+      <div class="seg-interest" style="flex:1"></div>
+    </div>
+    <div class="bar-legend">
+      <span><span class="dot" style="background:#0f766e"></span>Invested</span>
+      <span><span class="dot" style="background:#f59e0b"></span>Gains</span>
+    </div>
+  </div>
+</div>
+
+<h2>How SIP returns compound</h2>
+<p>Each monthly instalment compounds separately. The instalment made this month grows for the full period; the one made next month grows for one month less, and so on. The standard future-value formula is:</p>
+<div class="card"><strong>FV = P × ((1+i)ⁿ − 1) / i × (1+i)</strong><br>where P is the monthly amount, i is the monthly rate (annual ÷ 12 ÷ 100), and n is the number of months.</div>
+<p>The last multiplication by (1+i) accounts for each instalment being made at the start of the month. Because of compounding, the final years contribute most of the growth: a ₹5,000 monthly SIP at 12% for 10 years grows to about ₹11.6 lakh, but extending it to 20 years takes the same SIP past ₹49 lakh. Time in the market does more work than the amount.</p>
+
+<h2>What ₹5,000 a month can become at 12% a year</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Years</th><th>Invested</th><th>Estimated value</th><th>Gains</th></tr></thead>
+  <tbody>
+    <tr><td>5</td><td>₹3,00,000</td><td>₹4,12,000</td><td>₹1,12,000</td></tr>
+    <tr><td>10</td><td>₹6,00,000</td><td>₹11,61,000</td><td>₹5,61,000</td></tr>
+    <tr><td>15</td><td>₹9,00,000</td><td>₹25,23,000</td><td>₹16,23,000</td></tr>
+    <tr><td>20</td><td>₹12,00,000</td><td>₹49,96,000</td><td>₹37,96,000</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note"><strong>Remember:</strong> mutual fund returns are not guaranteed. The 12% figure is an assumption for illustration, not a promise. Equity funds fluctuate, sometimes sharply. Never pick a monthly amount you cannot sustain through a bad market.</div>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Can SIP investments lose money?</summary><p>Yes. SIPs in equity funds can be below your invested amount for months or years. SIPs reduce the risk of bad timing, not the risk of the market itself.</p></details>
+<details><summary>What return should I assume?</summary><p>A common conservative planning range for diversified equity funds is 10-12% annually over long periods, but actual outcomes vary widely. Debt funds are lower.</p></details>
+<details><summary>Is SIP the same as a mutual fund?</summary><p>No. A SIP is a method of investing in a fund in instalments, like an EMI in reverse. You can also invest lump sums in the same fund.</p></details>
+<details><summary>Are SIP returns taxed?</summary><p>Each instalment is treated as a separate purchase. Gains on equity funds held over a year are long-term capital gains taxed per current rules; check the latest rates before filing.</p></details>

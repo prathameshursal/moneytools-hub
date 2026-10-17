@@ -1,0 +1,65 @@
+---
+slug: percentage-calculator
+title: Percentage Calculator - Three Modes
+description: Calculate what percent of a number, what percentage one number is of another, or percentage increase or decrease between two values.
+script: /assets/percentage.js
+crumbs: Tools::/tools/|Percentage Calculator::
+---
+
+<h1>Percentage Calculator</h1>
+<p class="lead">Three common percentage questions, one tool. Pick the mode, enter two numbers, and get the answer with the working shown.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="pct-mode">What do you want to find?</label>
+    <select id="pct-mode">
+      <option value="of" selected>What is X% of Y?</option>
+      <option value="isWhat">X is what percent of Y?</option>
+      <option value="change">Percentage change from X to Y</option>
+    </select>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="pct-a" id="pct-a-label">Percentage (%)</label>
+      <input type="number" id="pct-a" step="any" placeholder="e.g. 18" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="pct-b" id="pct-b-label">Of number</label>
+      <input type="number" id="pct-b" step="any" placeholder="e.g. 2500" inputmode="decimal">
+    </div>
+  </div>
+  <button class="btn" id="pct-btn" type="button">Calculate</button>
+</div>
+
+<div class="result" id="pct-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Answer</div><div class="v" id="pct-out">-</div></div>
+  </div>
+  <p id="pct-note" style="margin-top:10px"></p>
+</div>
+
+<h2>The three percentage formulas</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Question</th><th>Formula</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>What is X% of Y?</td><td>X ÷ 100 × Y</td><td>18% of 2500 = 450</td></tr>
+    <tr><td>X is what percent of Y?</td><td>X ÷ Y × 100</td><td>450 is 18% of 2500</td></tr>
+    <tr><td>Change from X to Y?</td><td>(Y − X) ÷ |X| × 100</td><td>2500 → 2950 is +18%</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Percentage mistakes that cost money</h2>
+<ul>
+  <li><strong>Successive discounts do not add.</strong> 20% off then 30% off is 1 − 0.8 × 0.7 = 44% off, not 50%.</li>
+  <li><strong>Percentage points are not percentages.</strong> If a rate rises from 5% to 7%, it rose by 2 percentage points, which is a 40% increase.</li>
+  <li><strong>Reverse percentages trip people up.</strong> A price that rose 25% and then fell 25% is still 6.25% below the start, because the second percentage applies to a different base.</li>
+  <li><strong>GST extraction is division, not subtraction.</strong> Removing 18% GST from ₹1,180 leaves ₹1,000, not ₹967.60, because the tax was 18% of the base (₹1,000), not of the total.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<details><summary>How do I calculate a tip or GST mentally?</summary><p>Move the decimal point one place for 10%, halve it for 5%, and add. For 18%, take 10% + 5% + 3 × 1%.</p></details>
+<details><summary>Can I enter negative numbers?</summary><p>Yes, in the change mode. A negative old value flips the direction logic, which the tool handles using the absolute base.</p></details>
+<details><summary>Why is percentage change from 0 undefined?</summary><p>There is no meaningful base to measure from. A rise from 0 to any value is infinite in percentage terms.</p></details>
+<details><summary>Does this work on mobile?</summary><p>Yes, the whole site is designed mobile-first and this page uses numeric keypads on phones.</p></details>

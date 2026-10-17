@@ -1,0 +1,11 @@
+{
+  "name": "moneytools-hub",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "AdSense-ready finance tools and guides site (India)",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --serve"
+  }
+}
