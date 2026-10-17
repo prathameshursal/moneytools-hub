@@ -1,0 +1,4 @@
+Built 24 pages into dist/
+Note: adsensePubId is empty in config.mjs, AdSense loader and ads.txt skipped.
+Note: set your real domain in config.mjs before deploying.
+Serving dist/ at http://localhost:4173
