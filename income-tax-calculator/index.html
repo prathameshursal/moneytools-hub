@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Income Tax Calculator - New Regime FY 2025-26 | MoneyTools Hub</title>
+  <meta name="description" content="Estimate income tax on salary under India's new tax regime for FY 2025-26 with the ₹75,000 standard deduction and Section 87A rebate.">
+  <link rel="canonical" href="https://example.com/income-tax-calculator/">
+  <meta name="author" content="MoneyTools Hub Team">
+  <meta property="og:site_name" content="MoneyTools Hub">
+  <meta property="og:title" content="Income Tax Calculator - New Regime FY 2025-26 | MoneyTools Hub">
+  <meta property="og:description" content="Estimate income tax on salary under India's new tax regime for FY 2025-26 with the ₹75,000 standard deduction and Section 87A rebate.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/income-tax-calculator/">
+  <meta property="og:image" content="https://example.com/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Income Tax Calculator - New Regime FY 2025-26","description":"Estimate income tax on salary under India's new tax regime for FY 2025-26 with the ₹75,000 standard deduction and Section 87A rebate.","url":"https://example.com/income-tax-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which is better, new or old regime?","acceptedAnswer":{"@type":"Answer","text":"It depends on your deductions. If you claim large amounts under HRA, 80C, home-loan interest, and NPS, the old regime can still win. With few deductions the new regime usually costs less. Compute both before choosing; salaried taxpayers can switch each year unless they have business income."}},{"@type":"Question","name":"Is the ₹12 lakh rebate the same as \"no tax up to ₹12 lakh\"?","acceptedAnswer":{"@type":"Answer","text":"For ordinary income, yes: the 87A rebate wipes out slab tax up to ₹12 lakh taxable. Special-rate income like capital gains does not get the rebate."}},{"@type":"Question","name":"Why does my employer's TDS differ from this estimate?","acceptedAnswer":{"@type":"Answer","text":"Employers annualise from declarations, apply marginal relief, and handle special-rate income differently. Treat this tool as a ballpark."}},{"@type":"Question","name":"Does this store my salary?","acceptedAnswer":{"@type":"Answer","text":"No. The calculation runs in your browser and nothing is transmitted or saved."}}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><span class="brand-mark">₹</span> MoneyTools Hub</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/tools/">Tools</a>
+      <a class="nav-link" href="/guides/">Guides</a>
+      <a class="nav-link" href="/about/">About</a>
+      <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>›</span> <a href="Tools">/tools/</a> <span>›</span> <a href="Income Tax Calculator"></a></nav>
+    <article class="page">
+<h1>Income Tax Calculator (New Regime, FY 2025-26)</h1>
+<p class="lead">Enter your gross annual salary to estimate tax under the new regime: standard deduction of ₹75,000, the revised slab structure, and the Section 87A rebate.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="it-gross">Gross annual salary (₹)</label>
+    <input type="number" id="it-gross" min="0" step="10000" placeholder="e.g. 1200000" inputmode="numeric">
+  </div>
+  <div class="field">
+    <label for="it-deductions">Other deductible amounts (₹) <span class="hint">employer NPS under 80CCD(2), etc. New regime allows very few deductions</span></label>
+    <input type="number" id="it-deductions" min="0" step="1000" placeholder="usually 0" inputmode="numeric">
+  </div>
+  <button class="btn" id="it-btn" type="button">Calculate tax</button>
+</div>
+
+<div class="result" id="it-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Taxable income</div><div class="v" id="it-taxable">-</div></div>
+    <div class="cell"><div class="k">Estimated tax (with cess)</div><div class="v" id="it-tax">-</div></div>
+    <div class="cell"><div class="k">Tax per month</div><div class="v" id="it-monthly">-</div></div>
+  </div>
+  <div class="result-grid" style="margin-top:12px">
+    <div class="cell"><div class="k">Approximate take-home (year)</div><div class="v" id="it-takehome">-</div></div>
+  </div>
+</div>
+
+<h2>New regime slabs used by this calculator (FY 2025-26)</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Taxable income band</th><th>Rate</th></tr></thead>
+  <tbody>
+    <tr><td>Up to ₹4,00,000</td><td>Nil</td></tr>
+    <tr><td>₹4,00,001 - ₹8,00,000</td><td>5%</td></tr>
+    <tr><td>₹8,00,001 - ₹12,00,000</td><td>10%</td></tr>
+    <tr><td>₹12,00,001 - ₹16,00,000</td><td>15%</td></tr>
+    <tr><td>₹16,00,001 - ₹20,00,000</td><td>20%</td></tr>
+    <tr><td>₹20,00,001 - ₹24,00,000</td><td>25%</td></tr>
+    <tr><td>Above ₹24,00,000</td><td>30%</td></tr>
+  </tbody>
+</table>
+</div>
+<p>On top of slab tax, a 4% health and education cess applies. The Section 87A rebate makes tax nil for taxable incomes up to ₹12,00,000 (salary income after the ₹75,000 standard deduction, which corresponds to gross salary of about ₹12,75,000). Marginal relief applies near the threshold, which this simplified estimate does not model.</p>
+
+<div class="note note-warn"><strong>This is an estimate for planning.</strong> Actual liability depends on your exact components (HRA is not deductible in the new regime, but employer NPS is), surcharge above ₹50 lakh, and any changes in Finance Acts. Verify with a CA or on the official portal before filing.</div>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Which is better, new or old regime?</summary><p>It depends on your deductions. If you claim large amounts under HRA, 80C, home-loan interest, and NPS, the old regime can still win. With few deductions the new regime usually costs less. Compute both before choosing; salaried taxpayers can switch each year unless they have business income.</p></details>
+<details><summary>Is the ₹12 lakh rebate the same as "no tax up to ₹12 lakh"?</summary><p>For ordinary income, yes: the 87A rebate wipes out slab tax up to ₹12 lakh taxable. Special-rate income like capital gains does not get the rebate.</p></details>
+<details><summary>Why does my employer's TDS differ from this estimate?</summary><p>Employers annualise from declarations, apply marginal relief, and handle special-rate income differently. Treat this tool as a ballpark.</p></details>
+<details><summary>Does this store my salary?</summary><p>No. The calculation runs in your browser and nothing is transmitted or saved.</p></details>
+</article>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">MoneyTools Hub</div>
+        <p>Free calculators and plain-English money guides for India. All tools are free and run entirely in your browser.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Popular tools</h4>
+        <a href="/emi-calculator/">EMI Calculator</a>
+        <a href="/sip-calculator/">SIP Calculator</a>
+        <a href="/gst-calculator/">GST Calculator</a>
+        <a href="/income-tax-calculator/">Income Tax Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about/">About Us</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions/">Terms & Conditions</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 MoneyTools Hub. For information only, not financial advice.</div>
+  </footer>
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/income-tax.js" defer></script>
+</body>
+</html>

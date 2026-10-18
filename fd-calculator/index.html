@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FD Calculator - Fixed Deposit Maturity | MoneyTools Hub</title>
+  <meta name="description" content="Calculate fixed deposit maturity amount and interest for any bank FD with monthly, quarterly, half-yearly, or annual compounding. Free tool.">
+  <link rel="canonical" href="https://example.com/fd-calculator/">
+  <meta name="author" content="MoneyTools Hub Team">
+  <meta property="og:site_name" content="MoneyTools Hub">
+  <meta property="og:title" content="FD Calculator - Fixed Deposit Maturity | MoneyTools Hub">
+  <meta property="og:description" content="Calculate fixed deposit maturity amount and interest for any bank FD with monthly, quarterly, half-yearly, or annual compounding. Free tool.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/fd-calculator/">
+  <meta property="og:image" content="https://example.com/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"FD Calculator - Fixed Deposit Maturity","description":"Calculate fixed deposit maturity amount and interest for any bank FD with monthly, quarterly, half-yearly, or annual compounding. Free tool.","url":"https://example.com/fd-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is FD interest taxable?","acceptedAnswer":{"@type":"Answer","text":"Yes, fully, at your slab rate. It is taxed on accrual each year even if the FD pays out at maturity. There is no 80C benefit for interest; only 5-year tax-saver FD principal qualifies for 80C."}},{"@type":"Question","name":"What happens if I break an FD early?","acceptedAnswer":{"@type":"Answer","text":"Banks pay interest at the rate applicable for the period actually held, minus a penalty (typically 0.5-1%). Some banks also claw back the extra interest already paid."}},{"@type":"Question","name":"Are FDs insured?","acceptedAnswer":{"@type":"Answer","text":"Deposits up to ₹5 lakh per bank (principal + interest) are covered by DICGC insurance. Splitting large sums across banks keeps every rupee covered."}},{"@type":"Question","name":"Cumulative vs non-cumulative FD?","acceptedAnswer":{"@type":"Answer","text":"Non-cumulative FDs pay interest monthly, quarterly, or annually instead of adding it to the principal. Maturity stays near the principal; this tool models cumulative FDs."}}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><span class="brand-mark">₹</span> MoneyTools Hub</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/tools/">Tools</a>
+      <a class="nav-link" href="/guides/">Guides</a>
+      <a class="nav-link" href="/about/">About</a>
+      <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>›</span> <a href="Tools">/tools/</a> <span>›</span> <a href="FD Calculator"></a></nav>
+    <article class="page">
+<h1>FD Calculator</h1>
+<p class="lead">Enter a deposit amount, interest rate, tenure, and compounding frequency to see the maturity value of a fixed deposit.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="fd-principal">Deposit amount (₹)</label>
+    <input type="number" id="fd-principal" min="1000" step="1000" placeholder="e.g. 200000" inputmode="numeric">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="fd-rate">Interest rate (% per year)</label>
+      <input type="number" id="fd-rate" min="0" max="15" step="0.05" placeholder="e.g. 7.1" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="fd-years">Tenure (years)</label>
+      <input type="number" id="fd-years" min="0.25" max="20" step="0.25" placeholder="e.g. 5" inputmode="decimal">
+    </div>
+  </div>
+  <div class="field">
+    <label for="fd-comp">Compounding frequency</label>
+    <select id="fd-comp">
+      <option value="1">Annually</option>
+      <option value="2">Half-yearly</option>
+      <option value="4" selected>Quarterly (most bank FDs)</option>
+      <option value="12">Monthly</option>
+    </select>
+  </div>
+  <button class="btn" id="fd-btn" type="button">Calculate maturity</button>
+</div>
+
+<div class="result" id="fd-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Maturity amount</div><div class="v" id="fd-maturity">-</div></div>
+    <div class="cell"><div class="k">Interest earned</div><div class="v" id="fd-interest">-</div></div>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar">
+      <div class="seg-principal" id="fd-bar-principal" style="width:0%"></div>
+      <div class="seg-interest" style="flex:1"></div>
+    </div>
+    <div class="bar-legend">
+      <span><span class="dot" style="background:#0f766e"></span>Principal</span>
+      <span><span class="dot" style="background:#f59e0b"></span>Interest</span>
+    </div>
+  </div>
+</div>
+
+<h2>How FD interest is computed</h2>
+<p>Most Indian banks compound FD interest quarterly using cumulative compounding:</p>
+<div class="card"><strong>Maturity = P × (1 + r/n)^(n×t)</strong><br>where P is the deposit, r the annual rate, n the compounding frequency per year, and t the tenure in years.</div>
+<p>Frequency matters more than people assume. ₹2,00,000 at 7.1% for 5 years yields about ₹81,824 in interest with annual compounding, about ₹84,349 quarterly, and about ₹84,938 monthly. Senior-citizen rates (usually 0.50% higher) and bank-specific tenure bumps shift the result further.</p>
+
+<h2>Example: ₹2,00,000 for 5 years at 7.1%</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Compounding</th><th>Maturity</th><th>Interest</th></tr></thead>
+  <tbody>
+    <tr><td>Annual</td><td>₹2,81,824</td><td>₹81,824</td></tr>
+    <tr><td>Quarterly</td><td>₹2,84,349</td><td>₹84,349</td></tr>
+    <tr><td>Monthly</td><td>₹2,84,938</td><td>₹84,938</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note"><strong>TDS note:</strong> if total FD interest across a bank exceeds the annual threshold, the bank deducts tax at source. Submit Form 15G/15H if your total income is below the taxable limit.</div>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Is FD interest taxable?</summary><p>Yes, fully, at your slab rate. It is taxed on accrual each year even if the FD pays out at maturity. There is no 80C benefit for interest; only 5-year tax-saver FD principal qualifies for 80C.</p></details>
+<details><summary>What happens if I break an FD early?</summary><p>Banks pay interest at the rate applicable for the period actually held, minus a penalty (typically 0.5-1%). Some banks also claw back the extra interest already paid.</p></details>
+<details><summary>Are FDs insured?</summary><p>Deposits up to ₹5 lakh per bank (principal + interest) are covered by DICGC insurance. Splitting large sums across banks keeps every rupee covered.</p></details>
+<details><summary>Cumulative vs non-cumulative FD?</summary><p>Non-cumulative FDs pay interest monthly, quarterly, or annually instead of adding it to the principal. Maturity stays near the principal; this tool models cumulative FDs.</p></details>
+</article>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">MoneyTools Hub</div>
+        <p>Free calculators and plain-English money guides for India. All tools are free and run entirely in your browser.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Popular tools</h4>
+        <a href="/emi-calculator/">EMI Calculator</a>
+        <a href="/sip-calculator/">SIP Calculator</a>
+        <a href="/gst-calculator/">GST Calculator</a>
+        <a href="/income-tax-calculator/">Income Tax Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about/">About Us</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions/">Terms & Conditions</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 MoneyTools Hub. For information only, not financial advice.</div>
+  </footer>
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/fd.js" defer></script>
+</body>
+</html>

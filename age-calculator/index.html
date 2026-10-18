@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Age Calculator - Exact Age in Years, Months, Days | MoneyTools Hub</title>
+  <meta name="description" content="Calculate your exact age in years, months, and days, plus total months, weeks, days, hours, and a countdown to your next birthday.">
+  <link rel="canonical" href="https://example.com/age-calculator/">
+  <meta name="author" content="MoneyTools Hub Team">
+  <meta property="og:site_name" content="MoneyTools Hub">
+  <meta property="og:title" content="Age Calculator - Exact Age in Years, Months, Days | MoneyTools Hub">
+  <meta property="og:description" content="Calculate your exact age in years, months, and days, plus total months, weeks, days, hours, and a countdown to your next birthday.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/age-calculator/">
+  <meta property="og:image" content="https://example.com/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator - Exact Age in Years, Months, Days","description":"Calculate your exact age in years, months, and days, plus total months, weeks, days, hours, and a countdown to your next birthday.","url":"https://example.com/age-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the calculator handle leap years?","acceptedAnswer":{"@type":"Answer","text":"Yes. Day counts use real calendar dates, so 29 February birthdays and leap days are counted correctly."}},{"@type":"Question","name":"Why do my weeks not divide evenly into days?","acceptedAnswer":{"@type":"Answer","text":"Age in weeks is rounded down to whole weeks; the remainder shows up in the days figure."}},{"@type":"Question","name":"Can I calculate age at a past date?","acceptedAnswer":{"@type":"Answer","text":"Yes. Set both fields: date of birth and the target date. The tool requires the target to be after the birth date."}},{"@type":"Question","name":"Are the hour counts exact?","acceptedAnswer":{"@type":"Answer","text":"They are approximate because they assume whole days of 24 hours and ignore the time of day you were born."}}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><span class="brand-mark">₹</span> MoneyTools Hub</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/tools/">Tools</a>
+      <a class="nav-link" href="/guides/">Guides</a>
+      <a class="nav-link" href="/about/">About</a>
+      <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>›</span> <a href="Tools">/tools/</a> <span>›</span> <a href="Age Calculator"></a></nav>
+    <article class="page">
+<h1>Age Calculator</h1>
+<p class="lead">Enter your date of birth to compute your precise age and a countdown to your next birthday.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="age-dob">Date of birth</label>
+    <input type="date" id="age-dob">
+  </div>
+  <div class="field">
+    <label for="age-asof">Age as of <span class="hint">defaults to today; change to compute age at any date</span></label>
+    <input type="date" id="age-asof">
+  </div>
+  <button class="btn" id="age-btn" type="button">Calculate age</button>
+</div>
+
+<div class="result" id="age-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Your age</div><div class="v" id="age-main">-</div></div>
+    <div class="cell"><div class="k">In months</div><div class="v" id="age-months">-</div></div>
+    <div class="cell"><div class="k">In weeks</div><div class="v" id="age-weeks">-</div></div>
+  </div>
+  <div class="result-grid" style="margin-top:12px">
+    <div class="cell"><div class="k">In days</div><div class="v" id="age-days">-</div></div>
+    <div class="cell"><div class="k">In hours (approx.)</div><div class="v" id="age-hours">-</div></div>
+    <div class="cell"><div class="k">Next birthday</div><div class="v" id="age-next">-</div></div>
+  </div>
+</div>
+
+<h2>How age is counted</h2>
+<p>Calendar age is trickier than subtracting years. The convention is to count full years first, then remaining full months, then leftover days, borrowing the length of the previous month when the day-of-month falls short. That is exactly what this tool does.</p>
+<p>Watch for two quirks. People born on 29 February legally celebrate birthdays on 28 February (or 1 March) in non-leap years depending on jurisdiction. And "age at a future date" is useful beyond birthdays: visa and job applications often ask for age as of a specific cutoff date, which the as-of field handles.</p>
+
+<h2>Common uses</h2>
+<ul>
+  <li>Checking eligibility for exams, government schemes, and senior-citizen benefits with cutoff dates.</li>
+  <li>Filling forms that ask age in years, months, and days separately.</li>
+  <li>Computing exact age at a historical or future date for legal or genealogy work.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Does the calculator handle leap years?</summary><p>Yes. Day counts use real calendar dates, so 29 February birthdays and leap days are counted correctly.</p></details>
+<details><summary>Why do my weeks not divide evenly into days?</summary><p>Age in weeks is rounded down to whole weeks; the remainder shows up in the days figure.</p></details>
+<details><summary>Can I calculate age at a past date?</summary><p>Yes. Set both fields: date of birth and the target date. The tool requires the target to be after the birth date.</p></details>
+<details><summary>Are the hour counts exact?</summary><p>They are approximate because they assume whole days of 24 hours and ignore the time of day you were born.</p></details>
+</article>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">MoneyTools Hub</div>
+        <p>Free calculators and plain-English money guides for India. All tools are free and run entirely in your browser.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Popular tools</h4>
+        <a href="/emi-calculator/">EMI Calculator</a>
+        <a href="/sip-calculator/">SIP Calculator</a>
+        <a href="/gst-calculator/">GST Calculator</a>
+        <a href="/income-tax-calculator/">Income Tax Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about/">About Us</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions/">Terms & Conditions</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 MoneyTools Hub. For information only, not financial advice.</div>
+  </footer>
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/age.js" defer></script>
+</body>
+</html>

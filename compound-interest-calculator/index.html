@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compound Interest Calculator | MoneyTools Hub</title>
+  <meta name="description" content="Free compound interest calculator with monthly, quarterly, or annual compounding, plus a simple-interest comparison to see the difference.">
+  <link rel="canonical" href="https://example.com/compound-interest-calculator/">
+  <meta name="author" content="MoneyTools Hub Team">
+  <meta property="og:site_name" content="MoneyTools Hub">
+  <meta property="og:title" content="Compound Interest Calculator | MoneyTools Hub">
+  <meta property="og:description" content="Free compound interest calculator with monthly, quarterly, or annual compounding, plus a simple-interest comparison to see the difference.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/compound-interest-calculator/">
+  <meta property="og:image" content="https://example.com/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","description":"Free compound interest calculator with monthly, quarterly, or annual compounding, plus a simple-interest comparison to see the difference.","url":"https://example.com/compound-interest-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the rule of 72?","acceptedAnswer":{"@type":"Answer","text":"Divide 72 by the annual rate to estimate the doubling time. At 8%, money doubles roughly every 9 years; at 12%, every 6 years."}},{"@type":"Question","name":"Does more frequent compounding always mean more money?","acceptedAnswer":{"@type":"Answer","text":"Yes, but with diminishing returns. Moving from annual to monthly compounding at 8% adds about 0.6 percentage points of effective annual yield; monthly to daily adds almost nothing."}},{"@type":"Question","name":"What is effective annual rate?","acceptedAnswer":{"@type":"Answer","text":"The single annual rate that produces the same result as the compounded rate. 8% compounded monthly is an EAR of about 8.30%. Compare products by EAR, not headline rate."}},{"@type":"Question","name":"Does this calculator include deposits over time?","acceptedAnswer":{"@type":"Answer","text":"No, it models a single lump sum. For recurring monthly investing, use the SIP calculator."}}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><span class="brand-mark">₹</span> MoneyTools Hub</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/tools/">Tools</a>
+      <a class="nav-link" href="/guides/">Guides</a>
+      <a class="nav-link" href="/about/">About</a>
+      <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>›</span> <a href="Tools">/tools/</a> <span>›</span> <a href="Compound Interest Calculator"></a></nav>
+    <article class="page">
+<h1>Compound Interest Calculator</h1>
+<p class="lead">Compound interest pays interest on interest. Enter a principal, rate, and tenure to see growth under your chosen compounding frequency, compared against simple interest.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="ci-principal">Principal (₹)</label>
+    <input type="number" id="ci-principal" min="100" step="100" placeholder="e.g. 100000" inputmode="numeric">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="ci-rate">Annual interest rate (%)</label>
+      <input type="number" id="ci-rate" min="0" max="40" step="0.1" placeholder="e.g. 8" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="ci-years">Time (years)</label>
+      <input type="number" id="ci-years" min="0.5" max="50" step="0.5" placeholder="e.g. 10" inputmode="decimal">
+    </div>
+  </div>
+  <div class="field">
+    <label for="ci-freq">Compounded</label>
+    <select id="ci-freq">
+      <option value="1">Annually</option>
+      <option value="2">Half-yearly</option>
+      <option value="4">Quarterly</option>
+      <option value="12" selected>Monthly</option>
+    </select>
+  </div>
+  <button class="btn" id="ci-btn" type="button">Calculate</button>
+</div>
+
+<div class="result" id="ci-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Final amount</div><div class="v" id="ci-amount">-</div></div>
+    <div class="cell"><div class="k">Compound interest</div><div class="v" id="ci-interest">-</div></div>
+    <div class="cell"><div class="k">Same rate, simple interest</div><div class="v" id="ci-si">-</div></div>
+  </div>
+  <div class="result-grid" style="margin-top:12px">
+    <div class="cell"><div class="k">Extra earned by compounding</div><div class="v" id="ci-diff">-</div></div>
+  </div>
+</div>
+
+<h2>The compound interest formula</h2>
+<div class="card"><strong>A = P × (1 + r/n)^(n×t)</strong><br>P = principal, r = annual rate (as a decimal), n = compounding periods per year, t = years. Compound interest earned = A − P.</div>
+<p>Simple interest, by contrast, is P × r × t every year on the original principal only. The gap between the two widens with both rate and time: at 8% for 10 years on ₹1,00,000, simple interest totals ₹80,000 while monthly compounding produces about ₹1,21,900. The same ₹41,900 difference is why "time in the market" dominates investment advice.</p>
+
+<h2>Growth of ₹1,00,000 at 8% over time</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Years</th><th>Simple interest</th><th>Monthly compounding</th><th>Difference</th></tr></thead>
+  <tbody>
+    <tr><td>5</td><td>₹1,40,000</td><td>₹1,48,985</td><td>₹8,985</td></tr>
+    <tr><td>10</td><td>₹1,80,000</td><td>₹2,21,964</td><td>₹41,964</td></tr>
+    <tr><td>15</td><td>₹2,20,000</td><td>₹3,30,692</td><td>₹1,10,692</td></tr>
+    <tr><td>20</td><td>₹2,60,000</td><td>₹4,92,680</td><td>₹2,32,680</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Where compounding works for and against you</h2>
+<ul>
+  <li><strong>For you:</strong> FDs, RDs, PPF, EPF, debt funds, and long-horizon equity investing.</li>
+  <li><strong>Against you:</strong> credit card revolving debt (24-42% annually, often compounded monthly) and unpaid loan interest. The same math that doubles your corpus can double your debt.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<details><summary>What is the rule of 72?</summary><p>Divide 72 by the annual rate to estimate the doubling time. At 8%, money doubles roughly every 9 years; at 12%, every 6 years.</p></details>
+<details><summary>Does more frequent compounding always mean more money?</summary><p>Yes, but with diminishing returns. Moving from annual to monthly compounding at 8% adds about 0.6 percentage points of effective annual yield; monthly to daily adds almost nothing.</p></details>
+<details><summary>What is effective annual rate?</summary><p>The single annual rate that produces the same result as the compounded rate. 8% compounded monthly is an EAR of about 8.30%. Compare products by EAR, not headline rate.</p></details>
+<details><summary>Does this calculator include deposits over time?</summary><p>No, it models a single lump sum. For recurring monthly investing, use the <a href="/sip-calculator/">SIP calculator</a>.</p></details>
+</article>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">MoneyTools Hub</div>
+        <p>Free calculators and plain-English money guides for India. All tools are free and run entirely in your browser.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Popular tools</h4>
+        <a href="/emi-calculator/">EMI Calculator</a>
+        <a href="/sip-calculator/">SIP Calculator</a>
+        <a href="/gst-calculator/">GST Calculator</a>
+        <a href="/income-tax-calculator/">Income Tax Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about/">About Us</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions/">Terms & Conditions</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 MoneyTools Hub. For information only, not financial advice.</div>
+  </footer>
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/compound-interest.js" defer></script>
+</body>
+</html>

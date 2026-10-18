@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIP Calculator - Mutual Fund Returns | MoneyTools Hub</title>
+  <meta name="description" content="Calculate the future value of your monthly SIP investment. See invested amount, estimated gains, and wealth gained via compounding. Free tool.">
+  <link rel="canonical" href="https://example.com/sip-calculator/">
+  <meta name="author" content="MoneyTools Hub Team">
+  <meta property="og:site_name" content="MoneyTools Hub">
+  <meta property="og:title" content="SIP Calculator - Mutual Fund Returns | MoneyTools Hub">
+  <meta property="og:description" content="Calculate the future value of your monthly SIP investment. See invested amount, estimated gains, and wealth gained via compounding. Free tool.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/sip-calculator/">
+  <meta property="og:image" content="https://example.com/favicon.svg">
+  <meta name="twitter:card" content="summary">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SIP Calculator - Mutual Fund Returns","description":"Calculate the future value of your monthly SIP investment. See invested amount, estimated gains, and wealth gained via compounding. Free tool.","url":"https://example.com/sip-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can SIP investments lose money?","acceptedAnswer":{"@type":"Answer","text":"Yes. SIPs in equity funds can be below your invested amount for months or years. SIPs reduce the risk of bad timing, not the risk of the market itself."}},{"@type":"Question","name":"What return should I assume?","acceptedAnswer":{"@type":"Answer","text":"A common conservative planning range for diversified equity funds is 10-12% annually over long periods, but actual outcomes vary widely. Debt funds are lower."}},{"@type":"Question","name":"Is SIP the same as a mutual fund?","acceptedAnswer":{"@type":"Answer","text":"No. A SIP is a method of investing in a fund in instalments, like an EMI in reverse. You can also invest lump sums in the same fund."}},{"@type":"Question","name":"Are SIP returns taxed?","acceptedAnswer":{"@type":"Answer","text":"Each instalment is treated as a separate purchase. Gains on equity funds held over a year are long-term capital gains taxed per current rules; check the latest rates before filing."}}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/"><span class="brand-mark">₹</span> MoneyTools Hub</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <nav class="site-nav" id="siteNav">
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/tools/">Tools</a>
+      <a class="nav-link" href="/guides/">Guides</a>
+      <a class="nav-link" href="/about/">About</a>
+      <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>›</span> <a href="Tools">/tools/</a> <span>›</span> <a href="SIP Calculator"></a></nav>
+    <article class="page">
+<h1>SIP Calculator</h1>
+<p class="lead">A Systematic Investment Plan invests a fixed amount every month. Enter your monthly amount, expected annual return, and years to see the possible corpus.</p>
+
+<div class="calc">
+  <div class="field">
+    <label for="sip-monthly">Monthly investment (₹)</label>
+    <input type="number" id="sip-monthly" min="100" step="100" placeholder="e.g. 5000" inputmode="numeric">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="sip-rate">Expected return (% per year)</label>
+      <input type="number" id="sip-rate" min="0" max="30" step="0.5" placeholder="e.g. 12" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="sip-years">Investment period (years)</label>
+      <input type="number" id="sip-years" min="1" max="50" step="1" placeholder="e.g. 15" inputmode="numeric">
+    </div>
+  </div>
+  <button class="btn" id="sip-btn" type="button">Calculate</button>
+</div>
+
+<div class="result" id="sip-result" style="display:none">
+  <div class="result-grid">
+    <div class="cell"><div class="k">Estimated corpus</div><div class="v" id="sip-future">-</div></div>
+    <div class="cell"><div class="k">Amount invested</div><div class="v" id="sip-invested">-</div></div>
+    <div class="cell"><div class="k">Estimated gains</div><div class="v" id="sip-gain">-</div></div>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar">
+      <div class="seg-principal" id="sip-bar-invested" style="width:0%"></div>
+      <div class="seg-interest" style="flex:1"></div>
+    </div>
+    <div class="bar-legend">
+      <span><span class="dot" style="background:#0f766e"></span>Invested</span>
+      <span><span class="dot" style="background:#f59e0b"></span>Gains</span>
+    </div>
+  </div>
+</div>
+
+<h2>How SIP returns compound</h2>
+<p>Each monthly instalment compounds separately. The instalment made this month grows for the full period; the one made next month grows for one month less, and so on. The standard future-value formula is:</p>
+<div class="card"><strong>FV = P × ((1+i)ⁿ − 1) / i × (1+i)</strong><br>where P is the monthly amount, i is the monthly rate (annual ÷ 12 ÷ 100), and n is the number of months.</div>
+<p>The last multiplication by (1+i) accounts for each instalment being made at the start of the month. Because of compounding, the final years contribute most of the growth: a ₹5,000 monthly SIP at 12% for 10 years grows to about ₹11.6 lakh, but extending it to 20 years takes the same SIP past ₹49 lakh. Time in the market does more work than the amount.</p>
+
+<h2>What ₹5,000 a month can become at 12% a year</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Years</th><th>Invested</th><th>Estimated value</th><th>Gains</th></tr></thead>
+  <tbody>
+    <tr><td>5</td><td>₹3,00,000</td><td>₹4,12,000</td><td>₹1,12,000</td></tr>
+    <tr><td>10</td><td>₹6,00,000</td><td>₹11,61,000</td><td>₹5,61,000</td></tr>
+    <tr><td>15</td><td>₹9,00,000</td><td>₹25,23,000</td><td>₹16,23,000</td></tr>
+    <tr><td>20</td><td>₹12,00,000</td><td>₹49,96,000</td><td>₹37,96,000</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note"><strong>Remember:</strong> mutual fund returns are not guaranteed. The 12% figure is an assumption for illustration, not a promise. Equity funds fluctuate, sometimes sharply. Never pick a monthly amount you cannot sustain through a bad market.</div>
+
+<h2>Frequently asked questions</h2>
+<details><summary>Can SIP investments lose money?</summary><p>Yes. SIPs in equity funds can be below your invested amount for months or years. SIPs reduce the risk of bad timing, not the risk of the market itself.</p></details>
+<details><summary>What return should I assume?</summary><p>A common conservative planning range for diversified equity funds is 10-12% annually over long periods, but actual outcomes vary widely. Debt funds are lower.</p></details>
+<details><summary>Is SIP the same as a mutual fund?</summary><p>No. A SIP is a method of investing in a fund in instalments, like an EMI in reverse. You can also invest lump sums in the same fund.</p></details>
+<details><summary>Are SIP returns taxed?</summary><p>Each instalment is treated as a separate purchase. Gains on equity funds held over a year are long-term capital gains taxed per current rules; check the latest rates before filing.</p></details>
+</article>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">MoneyTools Hub</div>
+        <p>Free calculators and plain-English money guides for India. All tools are free and run entirely in your browser.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Popular tools</h4>
+        <a href="/emi-calculator/">EMI Calculator</a>
+        <a href="/sip-calculator/">SIP Calculator</a>
+        <a href="/gst-calculator/">GST Calculator</a>
+        <a href="/income-tax-calculator/">Income Tax Calculator</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about/">About Us</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-and-conditions/">Terms & Conditions</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 MoneyTools Hub. For information only, not financial advice.</div>
+  </footer>
+  <script src="/assets/app.js" defer></script>
+  <script src="/assets/sip.js" defer></script>
+</body>
+</html>
